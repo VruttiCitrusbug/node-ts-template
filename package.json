@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "SET NODE_ENV=production&& set NODE_CONFIG_DIR=src/config&& nodemon dist/index.js",
+    "start:dev": "set NODE_ENV=development&& set NODE_CONFIG_DIR=src/config&& nodemon src/index.ts",
+    "start:staging": "SET NODE_ENV=staging&& set NODE_CONFIG_DIR=src/config&& nodemon dist/index.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/config": "^3.3.5",
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "config": "^3.3.12",
+    "date-fns": "^4.1.0",
+    "express": "^4.21.0",
+    "winston": "^3.15.0",
+    "winston-daily-rotate-file": "^5.0.0"
+  }
+}

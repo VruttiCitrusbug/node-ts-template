@@ -1,0 +1,13 @@
+#npm packages
+node_modules/
+package-lock.json
+yarn.lock
+
+#environment files
+src/config/
+
+#build
+dist/
+
+#logs
+src/logger/logs/

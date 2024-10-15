@@ -1,0 +1,48 @@
+npm init -y
+
+npm i --save-dev typescript ts-node nodemon
+
+npx tsc --init
+
+npm install --save express
+npm install -save-dev @types/express
+
+*Set Up Environment-Specific Configurations:*
+
+npm install config
+
+Create a config directory:
+default.json: Base configuration that applies to all environments.
+development.json: Configuration for the development environment.
+staging.json: Configuration for the staging environment.
+production.json: Configuration for the production environment.
+test.json: Configuration for the test environment.
+
+asign them in package.json accordingly.
+"scripts": {
+    "start": "SET NODE_ENV=production&& set NODE_CONFIG_DIR=src/config&& nodemon dist/index.js",
+    "start:dev": "set NODE_ENV=development&& set NODE_CONFIG_DIR=src/config&& nodemon src/index.ts",
+    "start:staging": "SET NODE_ENV=staging&& set NODE_CONFIG_DIR=src/config&& nodemon dist/index.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+}
+
+declare the global type in index.d.ts in specific folder(src/@types/config)
+assign that config type in tsconfig.json accordingly.
+
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "config": [
+        "./src/@types/config"
+      ],
+      "@project_types": [
+        "./src/@types/project_types"
+      ]
+    }
+  }
+}
+
+*Set formatter in project*
+
