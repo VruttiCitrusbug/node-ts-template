@@ -1,9 +1,9 @@
 /*external modules*/
-import { createLogger, format, transports, Logger } from 'winston';
-import DailyRotateFile from 'winston-daily-rotate-file';
-import { addMonths } from 'date-fns';
-import path from 'path';
-import config from 'config';
+import { createLogger, format, transports, Logger } from "winston";
+import DailyRotateFile from "winston-daily-rotate-file";
+import { addMonths } from "date-fns";
+import path from "path";
+import config from "config";
 
 /**
  * Singleton class that provides a logger instance to log messages.
@@ -20,29 +20,29 @@ class LoggerService {
 
   // Private constructor to enforce singleton pattern
   private constructor() {
-    const logDir = path.join(__dirname, 'logs');
+    const logDir = path.join(__dirname, "logs");
 
     // Create the logger instance
     this.logger = createLogger({
       level: config.logger.level,
       format: format.combine(
-        format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+        format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
         format.printf(({ timestamp, level, message }) => {
           return `${timestamp} [${level.toUpperCase()}]: ${message}`;
-        })
+        }),
       ),
       transports: [
         new DailyRotateFile({
           filename: `${logDir}/app-%DATE%.log`,
-          datePattern: 'YYYY-MM-DD',
+          datePattern: "YYYY-MM-DD",
           zippedArchive: true,
-          maxSize: '20m',
+          maxSize: "20m",
           maxFiles: `${addMonths(new Date(), -3).toISOString()}`,
-          auditFile: `${logDir}/audit.json`
+          auditFile: `${logDir}/audit.json`,
         }),
-        new transports.Console()
+        new transports.Console(),
       ],
-      exitOnError: false
+      exitOnError: false,
     });
   }
 

@@ -1,3 +1,4 @@
+git reset HEAD~1 --soft    #undo last commit if last commit is not push
 npm init -y
 
 npm i --save-dev typescript ts-node nodemon
@@ -44,5 +45,38 @@ assign that config type in tsconfig.json accordingly.
   }
 }
 
+in tsc config change the values according to the node version
+https://github.com/tsconfig/bases?tab=readme-ov-file#centralized-recommendations-for-tsconfig-bases
+
 *Set formatter in project*
 
+setup eslint:
+1. npm init @eslint/config@latest
+answer thw q.
+√ How would you like to use ESLint? · problems
+√ What type of modules does your project use? · esm
+√ Which framework does your project use? · none
+√ Does your project use TypeScript? · typescript
+√ Where does your code run? · node
+The config that you've selected requires the following dependencies:
+
+eslint, globals, @eslint/js, typescript-eslint
+√ Would you like to install them now? · No / Yes
+√ Which package manager do you want to use? · npm
+
+Successfully created C:\Projects\node-ts-template\eslint.config.mjs file.
+inside that file config the rules
+
+then run the command as follows
+npx eslint . --ignore-pattern "dist/*"
+above command is to show the errors to fix them follow below command:
+npx eslint . --ignore-pattern "dist/*" --fix
+
+## setup prettier
+npm run prettier
+set the file with config as 
+.prettierrc.json
+ignore build with .prettierignore
+
+command to run the formatter:
+npx prettier --write .

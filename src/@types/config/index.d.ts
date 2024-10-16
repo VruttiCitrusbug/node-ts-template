@@ -1,4 +1,4 @@
-declare module 'config' {
+declare module "config" {
   interface IConfig {
     app: {
       port: number;
