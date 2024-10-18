@@ -11,3 +11,6 @@ dist/
 
 #logs
 src/logger/logs/
+
+#pre-commit git log
+.husky/

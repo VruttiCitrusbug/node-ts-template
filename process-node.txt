@@ -80,3 +80,12 @@ ignore build with .prettierignore
 
 command to run the formatter:
 npx prettier --write .
+
+*Set up linters and formatters are run before commit the code*
+
+install lefthook
+npm install --save-dev @evilmartians/lefthook @evilmartians/lefthook
+
+add the file named as lefthook.yml
+
+now it will run the command at time of commit

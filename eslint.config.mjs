@@ -5,9 +5,9 @@ import tseslint from "typescript-eslint";
 export default [
   {
     files: ["**/*.{js,mjs,cjs,ts}"],
-    ignores: ["**/node_modules/**", "**/dist/**"],
+    ignores: ["**/node_modules/**", "**/dist/**", ".gitignore"],
     rules: {
-      "no-console": "warn",
+      "no-console": "error",
 
       //* Best Practices
       eqeqeq: "warn",
@@ -21,6 +21,8 @@ export default [
       "no-useless-return": "error",
       "no-constant-condition": "warn",
       "no-unused-vars": ["warn", { argsIgnorePattern: "req|res|next|__" }],
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/typedef": "error",
 
       //* Enhance Readability
       indent: ["error", 2, { SwitchCase: 1 }],
